@@ -2,10 +2,14 @@ name: GitHub Classroom Workflow
 
 on:
   workflow_call:
+    inputs:
+      test_repo:
+        required: true
+        type: string
     
 env:
     test_repo: 'github.com/QA-Fullstack-SDET/blc_03_test'
-    github_token: ${{vars.TOKEN}}
+    github_token: ${{secrets.TOKEN}}
   
 jobs:
   build:
@@ -13,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Start
-        run: echo "${{ env.github_token }} and ${{vars.TOKEN}}"
+        run: echo "${{ env.github_token }} and ${{secrets.TOKEN}}"
       
       - uses: actions/checkout@v2
 
