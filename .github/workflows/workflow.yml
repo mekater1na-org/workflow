@@ -9,7 +9,7 @@ on:
     
 env:
     test_repo: ${{ inputs.test_repo }}
-    github_token: ${{ secrets.ENV_TOKEN }}
+    github_token: ${{ vars.ITS }}
   
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Start
-        run: echo "${{ env.github_token }}, ${{ secrets.ENV_TOKEN }}, ${{ env.ENV_V_TOKEN }}"
+        run: echo "${{ env.github_token }}, ${{ vars.ITS }}"
       
       - uses: actions/checkout@v2
 
