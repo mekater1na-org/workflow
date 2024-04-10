@@ -16,11 +16,11 @@ jobs:
     name: Classroom test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Start
         run: echo "${{ env.github_token }}"
     
-      - uses: actions/checkout@v2
-
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
