@@ -9,16 +9,13 @@ on:
     
 env:
     test_repo: ${{ inputs.test_repo }}
-    github_token: ${{ vars.ONE }}
+    github_token: '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'
   
 jobs:
   build:
     name: Classroom test
     runs-on: ubuntu-latest
     steps:
-      - name: Start
-        run: echo "${{ env.github_token }}, ${{ vars.ITS }}"
-      
       - uses: actions/checkout@v2
 
       - name: Setup Gradle
