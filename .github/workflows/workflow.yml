@@ -1,0 +1,50 @@
+name: GitHub Classroom Workflow
+
+on:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: false
+    
+env:
+    test_repo: 'github.com/QA-Fullstack-SDET/blc_03_test'
+    github_token: ${{vars.TOKEN}}
+  
+jobs:
+  build:
+    name: Classroom test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start
+        run: echo "${{ env.github_token }} and ${{vars.TOKEN}}"
+      
+      - uses: actions/checkout@v2
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+            gradle-version: 7.5.1
+          
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3
+        with:
+            distribution: 'corretto'
+            java-version: '17'
+                
+      - name: Clone tests
+        run: |
+            tree
+            sudo git clone https://mekater1na:${{ env.github_token }}@${{ env.test_repo }} task_repo
+            sudo chmod -R 777 ./task_repo
+            cp -R task_repo/. .
+            tree 
+          
+      - name: Gradle Build
+        run: gradle build -Dfile.encoding=UTF-8
+          
+      - name: Gradle Test
+        run: gradle test
