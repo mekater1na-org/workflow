@@ -8,7 +8,7 @@ on:
         type: string
     
 env:
-    test_repo: 'github.com/QA-Fullstack-SDET/blc_03_test'
+    test_repo: ${{ inputs.test_repo }}
     github_token: ${{secrets.TOKEN}}
   
 jobs:
