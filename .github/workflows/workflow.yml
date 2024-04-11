@@ -9,6 +9,7 @@ on:
     
 env:
     test_repo: ${{ inputs.test_repo }}
+    github_token: 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
   
 jobs:
   build:
@@ -16,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Start
-        run: echo "it's grain"
+        run: echo "Start testing your project"
       
       - uses: actions/checkout@v2
     
@@ -34,7 +35,7 @@ jobs:
       - name: Clone tests
         run: |
             tree
-            sudo git clone https://oauth2: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@${{ env.test_repo }} task_repo
+            sudo git clone https://mekater1na:${{ env.github_token }}@${{ env.test_repo }} task_repo
             sudo chmod -R 777 ./task_repo
             cp -R task_repo/. .
             tree 
