@@ -9,7 +9,7 @@ on:
     
 env:
     test_repo: ${{ inputs.test_repo }}
-    github_token: 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
+    github_token: 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
   
 jobs:
   build:
