@@ -9,7 +9,7 @@ on:
     
 env:
     test_repo: ${{ inputs.test_repo }}
-    github_token: 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
+    github_token: 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
   
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Start
-        run: echo "it's from vars - ${{ env.github_token }}"
+        run: echo "it's grain - ${{ env.github_token }}"
       
       - uses: actions/checkout@v2
     
@@ -35,7 +35,7 @@ jobs:
       - name: Clone tests
         run: |
             tree
-            sudo git clone https://mekater1na:${{ env.github_token }}@${{ env.test_repo }} task_repo
+            sudo git clone https://oauth2:${{ env.github_token }}@${{ env.test_repo }} task_repo
             sudo chmod -R 777 ./task_repo
             cp -R task_repo/. .
             tree 
