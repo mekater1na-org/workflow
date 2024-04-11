@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Start
-        run: echo "${{ env.github_token }}"
+        run: echo "it's new - ${{ env.github_token }}"
       
       - uses: actions/checkout@v2
     
